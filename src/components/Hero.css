@@ -1,0 +1,89 @@
+.hero {
+  position: relative;
+  min-height: 560px;
+  padding-bottom: 90px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(20, 20, 40, 0.35) 0%, rgba(20, 20, 40, 0.15) 40%, rgba(10, 20, 30, 0.55) 100%),
+    url('/Images/bg1.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero::after {
+  /* soft horizon glow to suggest sea + sky, stands in for a photo */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      60% 45% at 25% 78%,
+      rgba(20, 184, 166, 0.35),
+      transparent 70%
+    ),
+    radial-gradient(50% 40% at 85% 30%, rgba(255, 148, 114, 0.35), transparent 70%);
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px 0;
+  color: var(--white);
+}
+
+.hero__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.hero__subtitle {
+  margin: 10px 0 34px;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.hero__actions {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero__button {
+  border: none;
+  border-radius: 999px;
+  padding: 15px 36px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero__button--primary {
+  background: linear-gradient(120deg, var(--teal), var(--teal-deep));
+  box-shadow: 0 14px 26px -10px rgba(13, 148, 136, 0.65);
+}
+
+.hero__button--secondary {
+  background: linear-gradient(120deg, var(--coral), var(--sunset-orange));
+  box-shadow: 0 14px 26px -10px rgba(255, 107, 107, 0.55);
+}
+
+.hero__button:hover {
+  transform: translateY(-2px);
+}

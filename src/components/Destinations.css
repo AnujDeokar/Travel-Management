@@ -1,0 +1,30 @@
+.destinations {
+  background: var(--white);
+  padding: 56px clamp(20px, 5vw, 64px) 90px;
+}
+
+.destinations__heading {
+  margin: 0 0 28px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.9rem;
+  color: var(--navy-ink);
+}
+
+.destinations__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+@media (max-width: 1080px) {
+  .destinations__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .destinations__grid {
+    grid-template-columns: 1fr;
+  }
+}
