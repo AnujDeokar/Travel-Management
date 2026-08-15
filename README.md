@@ -1,4 +1,4 @@
-# Heplore — Travel Explorer (Homepage)
+# curiouscompass.in — Travel Explorer (Homepage)
 
 React + Vite build of the homepage design. This is step one of the travel
 management project — later pieces (search, trip details, booking flow,
