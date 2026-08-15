@@ -1,0 +1,9 @@
+/* Explore page currently has no page-level overrides — Hero, FilterTabs,
+   and Destinations each carry their own styles. Kept here so this page
+   follows the same pattern as the others, and as a place to add
+   page-specific tweaks later. */
+
+.explore-page {
+  display: flex;
+  flex-direction: column;
+}

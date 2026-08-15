@@ -87,3 +87,7 @@
 .hero__button:hover {
   transform: translateY(-2px);
 }
+
+a.hero__button {
+  display: inline-block;
+}

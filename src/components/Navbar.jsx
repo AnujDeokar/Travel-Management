@@ -1,28 +1,60 @@
+import { useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import './Navbar.css'
 
-const links = ['Explore', 'Trips', 'Destinations', 'Journal', 'Contact']
+const links = [
+  { label: 'Explore', to: '/' },
+  { label: 'Trips', to: '/trips' },
+  { label: 'Destinations', to: '/destinations' },
+  { label: 'Journal', to: '/journal' },
+  { label: 'Contact', to: '/contact' },
+]
 
 export default function Navbar() {
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
-    <header className="navbar">
-      <a className="navbar__brand" href="/">
+    <header className={`navbar${isHome ? '' : ' navbar--solid'}${menuOpen ? ' navbar--menu-open' : ''}`}>
+      <NavLink className="navbar__brand" to="/" onClick={() => setMenuOpen(false)}>
         <span className="navbar__mark" aria-hidden="true" />
         curiouscompass.in
-      </a>
+      </NavLink>
 
-      <nav className="navbar__links" aria-label="Primary">
-        {links.map((link, i) => (
-          <a
-            key={link}
-            className={`navbar__link${i === 0 ? ' navbar__link--active' : ''}`}
-            href={`#${link.toLowerCase()}`}
+      <nav className={`navbar__links${menuOpen ? ' navbar__links--open' : ''}`} aria-label="Primary">
+        {links.map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            end={link.to === '/'}
+            onClick={() => setMenuOpen(false)}
+            className={({ isActive }) =>
+              `navbar__link${isActive ? ' navbar__link--active' : ''}`
+            }
           >
-            {link}
-          </a>
+            {link.label}
+          </NavLink>
         ))}
+        <NavLink className="navbar__cta navbar__cta--mobile" to="/signup" onClick={() => setMenuOpen(false)}>
+          Sign up
+        </NavLink>
       </nav>
 
-      <button className="navbar__cta">Sign up</button>
+      <NavLink className="navbar__cta navbar__cta--desktop" to="/signup">
+        Sign up
+      </NavLink>
+
+      <button
+        className="navbar__toggle"
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((open) => !open)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
     </header>
   )
 }

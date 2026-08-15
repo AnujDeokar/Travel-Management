@@ -1,13 +1,28 @@
-import Hero from './components/Hero'
-import FilterTabs from './components/FilterTabs'
-import Destinations from './components/Destinations'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import ExplorePage from './pages/ExplorePage'
+import TripsPage from './pages/TripsPage'
+import DestinationsPage from './pages/DestinationsPage'
+import JournalPage from './pages/JournalPage'
+import ContactPage from './pages/ContactPage'
+import BookingPage from './pages/BookingPage'
+import SignupPage from './pages/SignupPage'
 
 export default function App() {
   return (
-    <div className="app">
-      <Hero />
-      <FilterTabs />
-      <Destinations />
-    </div>
+    <BrowserRouter>
+      <div className="app" style={{ position: 'relative' }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<ExplorePage />} />
+          <Route path="/trips" element={<TripsPage />} />
+          <Route path="/destinations" element={<DestinationsPage />} />
+          <Route path="/journal" element={<JournalPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/book" element={<BookingPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }

@@ -1,22 +1,22 @@
-import { useState } from 'react'
 import './FilterTabs.css'
 
-const tabs = ['Popular', 'Trending']
+const tabs = [
+  { label: 'Popular', value: 'popular' },
+  { label: 'Trending', value: 'trending' },
+]
 
-export default function FilterTabs() {
-  const [active, setActive] = useState(tabs[0])
-
+export default function FilterTabs({ active, onChange }) {
   return (
     <div className="filter-tabs" role="tablist" aria-label="Destination filters">
       {tabs.map((tab) => (
         <button
-          key={tab}
+          key={tab.value}
           role="tab"
-          aria-selected={active === tab}
-          className={`filter-tabs__pill${active === tab ? ' filter-tabs__pill--active' : ''}`}
-          onClick={() => setActive(tab)}
+          aria-selected={active === tab.value}
+          className={`filter-tabs__pill${active === tab.value ? ' filter-tabs__pill--active' : ''}`}
+          onClick={() => onChange(tab.value)}
         >
-          {tab}
+          {tab.label}
         </button>
       ))}
     </div>

@@ -67,3 +67,31 @@ button:focus-visible {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Shared layout for simple content pages:
+   Trips, Destinations, Journal, Contact, Booking, Signup */
+.page {
+  padding: 140px clamp(20px, 5vw, 64px) 90px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--navy-ink);
+}
+
+.page__subtitle {
+  margin: 10px 0 0;
+  color: var(--slate);
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding-top: 100px;
+  }
+}

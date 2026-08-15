@@ -1,0 +1,37 @@
+.trips-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.trip-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 26px;
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: var(--card-shadow);
+}
+
+.trip-card__name {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.trip-card__dates {
+  margin: 0;
+  color: var(--slate);
+  font-size: 0.9rem;
+}
+
+.trip-card__status {
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--teal-deep);
+  background: rgba(20, 184, 166, 0.14);
+}
