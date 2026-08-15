@@ -1,10 +1,6 @@
+import { Link } from 'react-router-dom'
+import journalPosts from '../data/journalPosts'
 import './JournalPage.css'
-
-const posts = [
-  { id: 1, title: '48 hours in Paris on a budget', date: 'Jul 2026' },
-  { id: 2, title: 'Best time to visit the Maldives', date: 'Jun 2026' },
-  { id: 3, title: 'A slow coastal drive down the Amalfi coast', date: 'May 2026' },
-]
 
 export default function JournalPage() {
   return (
@@ -13,11 +9,14 @@ export default function JournalPage() {
       <p className="page__subtitle">Travel notes, guides, and stories from the road.</p>
 
       <div className="journal-page__list">
-        {posts.map((post) => (
-          <a key={post.id} className="journal-post" href="#">
-            <h3 className="journal-post__title">{post.title}</h3>
+        {journalPosts.map((post) => (
+          <Link key={post.id} className="journal-post" to={`/journal/${post.id}`}>
+            <div className="journal-post__text">
+              <h3 className="journal-post__title">{post.title}</h3>
+              <p className="journal-post__excerpt">{post.excerpt}</p>
+            </div>
             <span className="journal-post__date">{post.date}</span>
-          </a>
+          </Link>
         ))}
       </div>
     </section>
