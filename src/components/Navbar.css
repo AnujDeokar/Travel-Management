@@ -172,3 +172,25 @@
     margin-top: 10px;
   }
 }
+
+.navbar__cta--desktop {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__account {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar__email {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 860px) {
+  .navbar__cta--desktop {
+    display: none;
+  }
+}

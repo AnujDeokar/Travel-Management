@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 import './Navbar.css'
 
 const links = [
@@ -14,6 +15,14 @@ export default function Navbar() {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
   const [menuOpen, setMenuOpen] = useState(false)
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
+
+  async function handleLogout() {
+    await logout()
+    setMenuOpen(false)
+    navigate('/')
+  }
 
   return (
     <header className={`navbar${isHome ? '' : ' navbar--solid'}${menuOpen ? ' navbar--menu-open' : ''}`}>
@@ -36,14 +45,33 @@ export default function Navbar() {
             {link.label}
           </NavLink>
         ))}
-        <NavLink className="navbar__cta navbar__cta--mobile" to="/signup" onClick={() => setMenuOpen(false)}>
-          Sign up
-        </NavLink>
+
+        {user ? (
+          <button className="navbar__cta navbar__cta--mobile" onClick={handleLogout}>
+            Log out
+          </button>
+        ) : (
+          <NavLink className="navbar__cta navbar__cta--mobile" to="/signup" onClick={() => setMenuOpen(false)}>
+            Sign up
+          </NavLink>
+        )}
       </nav>
 
-      <NavLink className="navbar__cta navbar__cta--desktop" to="/signup">
-        Sign up
-      </NavLink>
+      {user ? (
+        <div className="navbar__account navbar__cta--desktop">
+          <span className="navbar__email">{user.email}</span>
+          <button className="navbar__cta" onClick={handleLogout}>Log out</button>
+        </div>
+      ) : (
+        <div className="navbar__cta--desktop">
+          <NavLink className="navbar__link" to="/login" style={{ marginRight: 20 }}>
+            Log in
+          </NavLink>
+          <NavLink className="navbar__cta" to="/signup">
+            Sign up
+          </NavLink>
+        </div>
+      )}
 
       <button
         className="navbar__toggle"
