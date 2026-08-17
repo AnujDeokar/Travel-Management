@@ -204,24 +204,6 @@
   gap: 12px;
 }
 
-.navbar__cta--outline {
-  background: transparent;
-  border: 2px solid var(--teal);
-  color: var(--teal);
-  box-shadow: none;
-}
-
-.navbar__cta--outline:hover {
-  background: rgba(20, 184, 166, 0.1);
-  transform: translateY(-1px);
-  box-shadow: none;
-}
-
-.navbar--solid .navbar__cta--outline {
-  border-color: var(--teal);
-  color: var(--teal);
-}
-
 .navbar__account {
   display: flex;
   align-items: center;

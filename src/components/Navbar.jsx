@@ -58,7 +58,7 @@ export default function Navbar() {
           </button>
         ) : (
           <>
-            <NavLink className="navbar__cta navbar__cta--outline navbar__cta--mobile" to="/login" onClick={() => setMenuOpen(false)}>
+            <NavLink className="navbar__cta navbar__cta--mobile" to="/login" onClick={() => setMenuOpen(false)}>
               Sign in
             </NavLink>
             <NavLink className="navbar__cta navbar__cta--mobile" to="/signup" onClick={() => setMenuOpen(false)}>
@@ -75,7 +75,7 @@ export default function Navbar() {
         </div>
       ) : (
         <div className="navbar__cta--desktop navbar__auth-buttons">
-          <NavLink className="navbar__cta navbar__cta--outline" to="/login">
+          <NavLink className="navbar__cta" to="/login">
             Sign in
           </NavLink>
           <NavLink className="navbar__cta" to="/signup">
