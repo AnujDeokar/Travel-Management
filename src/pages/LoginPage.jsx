@@ -30,7 +30,7 @@ export default function LoginPage() {
       return
     }
 
-    navigate('/trips')
+    navigate('/')
   }
 
   return (

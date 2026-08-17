@@ -11,6 +11,12 @@ const links = [
   { label: 'Contact', to: '/contact' },
 ]
 
+function getFirstName(user) {
+  const fullName = user?.user_metadata?.full_name
+  if (fullName) return fullName.trim().split(' ')[0]
+  return user?.email?.split('@')[0] ?? 'there'
+}
+
 export default function Navbar() {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
@@ -51,21 +57,26 @@ export default function Navbar() {
             Log out
           </button>
         ) : (
-          <NavLink className="navbar__cta navbar__cta--mobile" to="/signup" onClick={() => setMenuOpen(false)}>
-            Sign up
-          </NavLink>
+          <>
+            <NavLink className="navbar__cta navbar__cta--outline navbar__cta--mobile" to="/login" onClick={() => setMenuOpen(false)}>
+              Sign in
+            </NavLink>
+            <NavLink className="navbar__cta navbar__cta--mobile" to="/signup" onClick={() => setMenuOpen(false)}>
+              Sign up
+            </NavLink>
+          </>
         )}
       </nav>
 
       {user ? (
         <div className="navbar__account navbar__cta--desktop">
-          <span className="navbar__email">{user.email}</span>
+          <span className="navbar__welcome">Welcome, {getFirstName(user)}!</span>
           <button className="navbar__cta" onClick={handleLogout}>Log out</button>
         </div>
       ) : (
-        <div className="navbar__cta--desktop">
-          <NavLink className="navbar__link" to="/login" style={{ marginRight: 20 }}>
-            Log in
+        <div className="navbar__cta--desktop navbar__auth-buttons">
+          <NavLink className="navbar__cta navbar__cta--outline" to="/login">
+            Sign in
           </NavLink>
           <NavLink className="navbar__cta" to="/signup">
             Sign up
