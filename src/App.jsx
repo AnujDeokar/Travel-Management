@@ -8,6 +8,7 @@ import JournalPostPage from './pages/JournalPostPage'
 import ContactPage from './pages/ContactPage'
 import BookingPage from './pages/BookingPage'
 import SignupPage from './pages/SignupPage'
+import LoginPage from './pages/LoginPage'
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/book" element={<BookingPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </div>
     </BrowserRouter>

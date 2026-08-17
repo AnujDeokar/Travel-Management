@@ -44,3 +44,20 @@
   font-weight: 600;
   color: var(--teal-deep);
 }
+
+.signup-form__error {
+  color: var(--coral);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.signup-form__login-link {
+  font-size: 0.9rem;
+  color: var(--slate);
+}
+
+.signup-form__login-link a {
+  color: var(--teal-deep);
+  font-weight: 600;
+}

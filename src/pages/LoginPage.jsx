@@ -3,8 +3,8 @@ import { useNavigate, Link } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import './SignupPage.css'
 
-export default function SignupPage() {
-  const [values, setValues] = useState({ name: '', email: '', password: '' })
+export default function LoginPage() {
+  const [values, setValues] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
@@ -18,18 +18,15 @@ export default function SignupPage() {
     setError('')
     setLoading(true)
 
-    const { error: signUpError } = await supabase.auth.signUp({
+    const { error: signInError } = await supabase.auth.signInWithPassword({
       email: values.email,
       password: values.password,
-      options: {
-        data: { full_name: values.name },
-      },
     })
 
     setLoading(false)
 
-    if (signUpError) {
-      setError(signUpError.message)
+    if (signInError) {
+      setError(signInError.message)
       return
     }
 
@@ -38,19 +35,10 @@ export default function SignupPage() {
 
   return (
     <section className="page signup-page">
-      <h1 className="page__title">Create your account</h1>
-      <p className="page__subtitle">Save trips, get personalized recommendations.</p>
+      <h1 className="page__title">Log in</h1>
+      <p className="page__subtitle">Welcome back.</p>
 
       <form className="signup-form" onSubmit={handleSubmit}>
-        <label className="signup-form__field">
-          Full name
-          <input
-            type="text"
-            value={values.name}
-            onChange={(e) => handleChange('name', e.target.value)}
-            required
-          />
-        </label>
         <label className="signup-form__field">
           Email
           <input
@@ -64,7 +52,6 @@ export default function SignupPage() {
           Password
           <input
             type="password"
-            minLength="6"
             value={values.password}
             onChange={(e) => handleChange('password', e.target.value)}
             required
@@ -74,11 +61,11 @@ export default function SignupPage() {
         {error && <p className="signup-form__error">{error}</p>}
 
         <button type="submit" className="signup-form__submit" disabled={loading}>
-          {loading ? 'Creating account...' : 'Sign up'}
+          {loading ? 'Logging in...' : 'Log in'}
         </button>
 
         <p className="signup-form__login-link">
-          Already have an account? <Link to="/login">Log in</Link>
+          Don't have an account? <Link to="/signup">Sign up</Link>
         </p>
       </form>
     </section>
