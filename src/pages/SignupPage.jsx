@@ -78,7 +78,7 @@ export default function SignupPage() {
         </button>
 
         <p className="signup-form__login-link">
-          Already have an account? <Link to="/login">Log in</Link>
+          Already have an account? <Link to="/login">Sign in</Link>
         </p>
       </form>
     </section>

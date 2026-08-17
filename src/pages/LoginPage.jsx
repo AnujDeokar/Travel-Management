@@ -35,7 +35,7 @@ export default function LoginPage() {
 
   return (
     <section className="page signup-page">
-      <h1 className="page__title">Log in</h1>
+      <h1 className="page__title">Sign in</h1>
       <p className="page__subtitle">Welcome back.</p>
 
       <form className="signup-form" onSubmit={handleSubmit}>
@@ -61,7 +61,7 @@ export default function LoginPage() {
         {error && <p className="signup-form__error">{error}</p>}
 
         <button type="submit" className="signup-form__submit" disabled={loading}>
-          {loading ? 'Logging in...' : 'Log in'}
+          {loading ? 'Signing in...' : 'Sign in'}
         </button>
 
         <p className="signup-form__login-link">
